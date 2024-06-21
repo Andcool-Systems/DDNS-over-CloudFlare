@@ -1,5 +1,5 @@
 # DDNS over CloudFlare
-Реализация сисетмы динамических доменных имён через API CloudFlare.  
+Реализация системы динамических доменных имён через API CloudFlare.  
 DDNS получает ваш ip адрес через [www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace)
 
 ## Начало работы

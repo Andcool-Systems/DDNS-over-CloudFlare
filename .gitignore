@@ -29,6 +29,7 @@ bin/
 !**/src/test/**/bin/
 
 config.json
+.idea
 
 ### NetBeans ###
 /nbproject/private/
