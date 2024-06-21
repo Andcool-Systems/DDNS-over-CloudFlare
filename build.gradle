@@ -23,7 +23,7 @@ tasks.test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.andcool.OAuthServer'
+                'Main-Class': 'ru.andcool.Main'
         )
     }
 }
