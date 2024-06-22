@@ -15,7 +15,7 @@ public class CloudFlare {
     String BEARER;
     String ZONE;
 
-    public JSONObject getDNSRecord(String name, String type) throws Exception {
+    public JSONObject getDNSRecord(String name) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(format("https://api.cloudflare.com/client/v4/zones/%s/dns_records", this.ZONE)))
@@ -29,8 +29,7 @@ public class CloudFlare {
         JSONObject json_response = new JSONObject(response.body());
         for (Object record : json_response.getJSONArray("result")) {
             JSONObject record_json = new JSONObject(record.toString());
-            if (Objects.equals(record_json.getString("name"), name) &&
-                    Objects.equals(record_json.getString("type"), type)) {
+            if (Objects.equals(record_json.getString("name"), name)) {
                 return record_json;
             }
         }

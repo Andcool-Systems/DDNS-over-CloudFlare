@@ -1,16 +1,18 @@
 package ru.andcool;
 
 import org.json.JSONObject;
+import ru.andcool.Logger.Level;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import static ru.andcool.Main.Logger;
+
 public class UserConfig {
     public static String HOSTNAME = "example.com";
     public static String BEARER = "<token>";
     public static String ZONE_ID = "<zone id>";
-    public static String RECORD_TYPE = "A";
     public static boolean PROXIED = true;
     public static int PERIOD = 30;
 
@@ -23,14 +25,13 @@ public class UserConfig {
         jsonConfig.put("hostname", HOSTNAME);
         jsonConfig.put("token", BEARER);
         jsonConfig.put("zone_id", ZONE_ID);
-        jsonConfig.put("record_type", RECORD_TYPE);
         jsonConfig.put("proxied", PROXIED);
         jsonConfig.put("period", PERIOD);
         try {
             Files.createDirectories(configFile.toPath().getParent());
             Files.writeString(configFile.toPath(), jsonConfig.toString(4));
         } catch (IOException e) {
-            System.out.println(e.toString());
+            Logger.log(Level.ERROR, e.toString());
         }
     }
 
@@ -46,14 +47,14 @@ public class UserConfig {
                     case "hostname" -> HOSTNAME = jsonConfig.getString(key);
                     case "token" -> BEARER = jsonConfig.getString(key);
                     case "zone_id" -> ZONE_ID = jsonConfig.getString(key);
-                    case "record_type" -> RECORD_TYPE = jsonConfig.getString(key);
                     case "proxied" -> PROXIED = jsonConfig.getBoolean(key);
                     case "period" -> PERIOD = jsonConfig.getInt(key);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            Logger.log(Level.WARN, "config.json not found! Creating new... Please, update data in config!");
             save();
+            System.exit(-1);
         }
     }
 }
