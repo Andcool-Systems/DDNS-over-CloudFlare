@@ -41,4 +41,4 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            app/build/libs/
+            build/libs/
