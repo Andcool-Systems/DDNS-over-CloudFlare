@@ -11,7 +11,6 @@ DDNS получает ваш ip адрес через [www.cloudflare.com/cdn-cg
   "hostname": "example.com",
   "period": 30,
   "proxied": true,
-  "record_type": "A",
   "token": "<token>"
 }
 ``` 
@@ -19,7 +18,6 @@ DDNS получает ваш ip адрес через [www.cloudflare.com/cdn-cg
 `hostname` – Имя DNS записи, которая будет создана и обновляться  
 `period` – Период в секундах, с которым будет проверяться текущий ip адрес  
 `proxied` – Определяет, будут ли реквесты на hostname проксироваться через CloudFlare  
-`record_type` – Тип DNS записи  
 `token` – Bearer [токен CloudFlare](https://dash.cloudflare.com/profile/api-tokens). Должен иметь права на чтение и изменение DNS записей  
 
 ## Принцип работы
