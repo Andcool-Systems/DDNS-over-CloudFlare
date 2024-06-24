@@ -3,8 +3,11 @@
 DDNS получает ваш ip адрес через [www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace)
 
 ## Начало работы
-Запустите собранный .jar файл через команду `java -jar file.jar`. При первом запуске код сгенерирует 
-файл `config.json`, имеющий следующее содержание:
+Запустите собранный .jar файл через команду `java -jar file.jar`.  
+1. При первом запуске процесс завершится с кодом `-1`, сгенерировав файл [`config.json`](https://github.com/Andcool-Systems/DDNS_over_CloudFlare#config.json).
+2. После настройки всех параметров запустите проект снова.
+
+## config.json
 ```json
 {
   "zone_id": "<zone_id>",
@@ -18,7 +21,7 @@ DDNS получает ваш ip адрес через [www.cloudflare.com/cdn-cg
 `hostname` – Имя DNS записи, которая будет создана и обновляться  
 `period` – Период в секундах, с которым будет проверяться текущий ip адрес  
 `proxied` – Определяет, будут ли реквесты на hostname проксироваться через CloudFlare  
-`token` – Bearer [токен CloudFlare](https://dash.cloudflare.com/profile/api-tokens). Должен иметь права на чтение и изменение DNS записей  
+`token` – Bearer [токен CloudFlare](https://dash.cloudflare.com/profile/api-tokens). Должен иметь права на чтение и изменение DNS записей    
 
 ## Принцип работы
 При запуске код проверяет наличие DNS записи в CloudFlare по переданным в `config.json` параметрам.
